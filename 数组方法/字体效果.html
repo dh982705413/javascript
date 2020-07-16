@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 100vh;
+        background: linear-gradient(135deg, #43cbff 10%, #9708cc 100%) no-repeat;
+      }
+      div {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      span {
+        letter-spacing: 1rem;
+        cursor: pointer;
+        font-size: 5rem;
+        transition: 0.5s;
+        color: #43cbff;
+      }
+      .color {
+        animation-name: dh;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        animation-timing-function: linear;
+        animation-direction: alternate;
+      }
+      @keyframes dh {
+        0% {
+          transform: translateX(-2rem);
+        }
+        50% {
+          color: cadetblue;
+          transform: scale(2);
+        }
+        100% {
+          color: chartreuse;
+          transform: scale(0.1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>denghao.shop</div>
+    <script>
+      const div = document.querySelector("div");
+      [...div.textContent].reduce((pre, cur, index) => {
+        pre == index && (div.innerHTML = "");
+
+        let span = document.createElement("span");
+        span.innerHTML = cur;
+        div.appendChild(span);
+        span.addEventListener("mouseover", function () {
+          this.classList.add("color");
+        });
+        span.addEventListener("animationend", function () {
+          this.classList.remove("color");
+        });
+      }, 0);
+    </script>
+  </body>
+</html>

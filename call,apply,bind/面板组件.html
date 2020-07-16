@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        dl {
+            width: 300px;
+            text-align: center;
+            margin: 100px auto;
+        }
+
+        dd {
+            background-color: cyan;
+            height: 90px;
+            line-height: 90px;
+            transition: 0.5s;
+            overflow: hidden;
+            border: 1px solid #fff;
+        }
+
+        dt {
+            background-color: chocolate;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .close {
+            height: 0;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <dl>
+        <dt>dh1</dt>
+        <dd>1</dd>
+        <dt>dh2</dt>
+        <dd>2</dd>
+    </dl>
+    <script>
+        let dts = document.querySelectorAll('dt');
+        dts.forEach((dt, index) => {
+            let dds = document.querySelectorAll('dd');
+            dt.addEventListener('click', () => {
+                dds.forEach(item => item.classList.add('close'))
+                dds[index].classList.remove('close')
+            })
+        })
+    </script>
+</body>
+
+</html>

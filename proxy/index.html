@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" v-model="title" />
+    <input type="text" v-model="title" />
+    <div v-bind="title"></div>
+</body>
+<script>
+    function Vue() {
+        let proxy = new Proxy({}, {
+            get(obj, pro, value) {
+            },
+            set(obj, pro, value) {
+                obj[pro] = value
+                document.querySelectorAll(`[v-model=${pro}],[v-bind=${pro}`).forEach(el => {
+                    el.innerHTML = value
+                    el.value = value
+                })
+            }
+        })
+        this.run = function () {
+            let elem = document.querySelectorAll('[v-model]')
+            elem.forEach(item => {
+                item.addEventListener('keyup', function () {
+                    proxy[this.getAttribute('v-model')] = this.value
+                    console.log(proxy);
+                })
+            })
+        }
+    }
+    let vue = new Vue()
+    vue.run()
+    console.log(vue);
+</script>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+      }
+      a {
+        color: white;
+        background-color: green;
+        outline: none;
+        padding: 0 2px;
+        border-radius: 2px;
+      }
+      a:hover {
+        opacity: 0.8;
+      }
+      ul {
+        width: 200px;
+        margin: 200px auto;
+      }
+      li {
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid red;
+        margin-bottom: 20px;
+        transition: 0.5s;
+      }
+      .remove {
+        border: 2px solid #666;
+        opacity: 0.2;
+        transition: 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>吃饭<a href="javascript:;">×</a></li>
+      <li>睡觉<a href="javascript:;">×</a></li>
+      <li>打豆豆<a href="javascript:;">×</a></li>
+    </ul>
+    <script>
+      class Todo {
+        constructor() {
+          this.nodes = document.querySelectorAll("ul>li");
+          this.lists = new WeakSet();
+          this.nodes.forEach((item) => this.lists.add(item));
+          this.run();
+        }
+        run() {
+          this.todoEvent();
+        }
+        todoEvent() {
+          this.nodes.forEach((item) => {
+            let a = item.querySelector("a");
+            a.addEventListener("click", (e) => {
+              const li = e.target.parentElement;
+              if (this.lists.has(li)) {
+                li.classList.add("remove");
+                this.lists.delete(li);
+              } else {
+                li.classList.remove("remove");
+                this.lists.add(li);
+              }
+            });
+          });
+        }
+      }
+      new Todo();
+    </script>
+  </body>
+</html>

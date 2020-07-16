@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" v-model="title" />
+    <input type="text" v-model="title" />
+    <div v-bind="title"></div>
+</body>
+<script>
+    function View() {
+        //设置代理拦截
+        let proxy = new Proxy(
+            {},
+            {
+                get(obj, property) { },
+                set(obj, property, value) {
+                    obj[property] = value;
+                    document
+                        .querySelectorAll(
+                            `[v-model="${property}"],[v-bind="${property}"]`
+                        )
+                        .forEach(el => {
+                            el.innerHTML = value;
+                            el.value = value;
+                        });
+                }
+            }
+        );
+        //初始化绑定元素事件
+        this.run = function () {
+            const els = document.querySelectorAll("[v-model]");
+            els.forEach(item => {
+                item.addEventListener("keyup", function () {
+                    proxy[this.getAttribute("v-model")] = this.value;
+                });
+            });
+        };
+    }
+    let view = new View().run();
+</script>
+
+</html>

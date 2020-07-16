@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        a {
+            display: block;
+            width: 21px;
+            height: 21px;
+            color: white;
+            background-color: green;
+            text-align: center;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            display: flex;
+            width: 400px;
+            height: 200px;
+            border: 2px solid #eeeeee;
+            margin: 50px auto;
+        }
+
+        .container div {
+            flex: 1;
+            border-left: 2px solid #eeeeee;
+            padding: 10px;
+        }
+
+        .container ul {
+            width: 200px;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .container ul li {
+            width: 120px;
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid red;
+            padding: 5px;
+
+        }
+
+        p span {
+            display: inline-block;
+            padding: 5px;
+            background-color: green;
+            color: white;
+            border-radius: 5px;
+            margin: 10px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul>
+            <li><span>JAVA</span><a href="javascript:;">+</a></li>
+            <li><span>JavaScript</span><a href="javascript:;">+</a></li>
+            <li><span>CSS</span><a href="javascript:;">+</a></li>
+            <li><span>Vue</span><a href="javascript:;">+</a></li>
+        </ul>
+        <div>
+            <span id="count">暂未选课</span>
+            <p id="content">
+            </p>
+        </div>
+    </div>
+    <script>
+        class Lesson {
+            constructor() {
+                this.nodes = document.querySelectorAll('ul>li')
+                this.countEle = document.getElementById('count')
+                this.contentEle = document.getElementById('content')
+                this.map = new WeakMap()
+            }
+            run() {
+                this.nodes.forEach(li => {
+                    li.querySelector('a').addEventListener('click', (e) => {
+                        const a = e.target
+                        const state = li.getAttribute('select')
+                        if (state) {
+                            li.removeAttribute('select')
+                            this.map.delete(li)
+                            a.innerHTML = '+'
+                            a.style.backgroundColor = "green"
+                            li.style.borderColor = "red"
+                        } else {
+                            this.map.set(li)
+                            li.setAttribute('select', true)
+                            a.innerHTML = "-"
+                            a.style.backgroundColor = "red"
+                            li.style.borderColor = "green"
+                        }
+                        this.render()
+                    })
+                })
+            }
+            count() {
+                return [...this.nodes].reduce((count, li) => {
+                    return count += (this.map.has(li) ? 1 : 0)
+                }, 0)
+            }
+            content() {
+                let content = [...this.nodes].filter((li) => {
+                    return this.map.has(li)
+                }).map(li => `<span>${li.querySelector('span').innerHTML}</span>`).join("")
+                return content
+            }
+            render() {
+                this.countEle.innerHTML = this.count() ? `已经选择了${this.count()}门课` : "暂未选课"
+                this.contentEle.innerHTML = this.content()
+            }
+        }
+        new Lesson().run()
+
+    </script>
+</body>
+
+</html>

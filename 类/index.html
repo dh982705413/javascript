@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   类声明
+      class User {
+        constructor(name) {
+          this.name = name;
+        }
+        getName() {
+          return this.name;
+        }
+        get dh() {
+          return "dh";
+        }
+        set dh(val) {
+          console.log(val);
+          return true;
+        }
+      }
+      //   函数声明
+      function User2(name) {
+        this.name = name;
+      }
+      User2.prototype.getName = function () {
+        return this.name;
+      };
+
+      let dh = new User("邓浩");
+      let dh2 = new User2("杨智");
+
+      console.dir(dh);
+      console.dir(dh2);
+    </script>
+  </body>
+</html>

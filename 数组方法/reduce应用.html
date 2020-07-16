@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let cart = [
+      //   { name: "js", price: 456 },
+      //   { name: "css", price: 400 },
+      //   { name: "html", price: 556 },
+      //   { name: "mysql", price: 56 },
+      //   { name: "java", price: 156 },
+      //   { name: "mongodb", price: 406 },
+      // ];
+      // // 获取最贵商品
+      // function maxPrice(goods) {
+      //   return goods.reduce((pre, cur) => {
+      //     return pre.price > cur.price ? pre : cur;
+      //   });
+      // }
+      // //   获取商品总值
+      // function sumPrice(goods) {
+      //   return goods.reduce((pre, cur) => {
+      //     return pre + cur.price;
+      //   }, 0);
+      // }
+      // //   获取商品超过某个数值的商品名字
+      // function getName(goods, price) {
+      //   return goods.reduce((pre, cur) => {
+      //     if (cur.price >= price) {
+      //       pre.push(cur.name);
+      //     }
+      //     return pre;
+      //   }, []);
+      // }
+
+      // let dh = maxPrice(cart);
+      // console.log(dh);
+
+      // let dh2 = sumPrice(cart);
+      // console.log(dh2);
+
+      // let dh3 = getName(cart, 400);
+      // console.log(dh3);
+
+      let cart2 = [
+        { name: "js", price: 456 },
+        { name: "css", price: 400 },
+        { name: "html", price: 556 },
+        { name: "html", price: 556 },
+        { name: "html", price: 556 },
+        { name: "mysql", price: 56 },
+        { name: "java", price: 156 },
+        { name: "mongodb", price: 406 },
+        { name: "mongodb", price: 406 },
+        { name: "mongodb", price: 406 },
+        { name: "mongodb", price: 406 },
+      ];
+
+      // 数组去重
+      function dh(goods) {
+        return goods.reduce((arr, cur) => {
+          let find = arr.find((v) => v.name === cur.name);
+          if (!find) arr.push(cur);
+          return arr;
+        }, []);
+      }
+      console.log(dh(cart2));
+    </script>
+  </body>
+</html>

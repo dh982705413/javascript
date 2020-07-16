@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let lesson = [
+        { title: "MySQL从入门到删库", author: "邓浩" },
+        { title: "JAVA从入门到入土", author: "邓浩的弟弟" },
+        { title: "nodejs从入门到跳楼", author: "邓浩的妹妹" },
+      ];
+
+      function template() {
+        return `<ul>
+              ${lesson
+                .map(
+                  (item) =>
+                    links`<li>作者：${item.author},课程:${item.title}</li>`
+                )
+                .join("")}
+              </ul>`;
+      }
+      function links(strings, ...val) {
+        return strings
+          .map(
+            (str, key) =>
+              str +
+              (val[key]
+                ? val[key].replace(
+                    "邓浩",
+                    `<a href="http://www.baidu.com">邓浩</a>`
+                  )
+                : "")
+          )
+          .join("");
+      }
+
+      document.body.innerHTML += template();
+    </script>
+  </body>
+</html>

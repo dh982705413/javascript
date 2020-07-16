@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 递归
+        // function copy(object) {
+        //     let obj = object instanceof Array ? [] : {}
+        //     for (const [k, v] of Object.entries(object)) {
+        //         obj[k] = typeof v == 'object' ? copy(v) : v
+        //     }
+        //     return obj
+        // }
+        // let dh = { name: '邓浩', age: 18, hobbier: ['吃饭', '睡觉', '打代码'], category: { name: '人类', height: 180 } }
+        // let dhcopy = copy(dh)
+        // console.log(dh);
+        // console.log(dhcopy);
+        // dh.category.name = "狗"
+        // console.log(dh);
+        // console.log(dhcopy);
+
+        // 通过JSON
+        let dh = { name: '邓浩', age: 18, hobbier: ['吃饭', '睡觉', '打代码'], category: { name: '人类', height: 180 } }
+        function copy2(object) {
+            let objectJSON = JSON.stringify(object)
+            let copy = JSON.parse(objectJSON)
+            return copy
+        }
+        let copy = copy2(dh)
+        console.log(copy);
+    </script>
+</body>
+
+</html>

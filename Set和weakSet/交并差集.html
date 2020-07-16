@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let a = new Set([1, 2, 56, 8, 3, 4]);
+      let b = new Set([8, 1, 48, 35, 7, 4]);
+
+      //   并集
+      console.log(new Set([...a, ...b]));
+      //   交集
+      console.log(new Set([...a].filter((item) => b.has(item))));
+      //   差集
+      console.log(new Set([...a].filter((item) => !b.has(item))));
+    </script>
+  </body>
+</html>

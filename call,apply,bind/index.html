@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function User(name) {
+            this.name = name
+
+        }
+        let dh = new User('邓浩')
+        console.log(dh);
+        let hd = { url: "www.denghao.shop" }
+        User.call(hd, '龙长春')
+        console.log(hd);
+        console.log(Array);
+    </script>
+</body>
+
+</html>

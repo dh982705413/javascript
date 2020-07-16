@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: darkblue;
+            transition: 2s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        function Colors(elem) {
+            this.elem = elem
+            this.colors = ["#2980b9", "#3498db", "#27ae60", "#16a085", "#8e44ad", "#9b59b6"]
+            this.run = function () {
+                setInterval(() => {
+                    let i = Math.floor(Math.random() * this.colors.length)
+                    this.elem.style.backgroundColor = this.colors[i]
+                }, 2000)
+            }
+        }
+        let obj = new Colors(document.body)
+        obj.run()
+    </script>
+</body>
+
+</html>

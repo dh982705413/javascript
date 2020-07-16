@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      main {
+        width: 300px;
+      }
+      main nav a {
+        display: inline-block;
+        background-color: #999999;
+        text-decoration: none;
+        color: #ffffff;
+        padding: 0.6rem;
+      }
+      main section {
+        background-color: cadetblue;
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        font-size: 5rem;
+        display: none;
+      }
+      main nav a:first-of-type {
+        background-color: chocolate;
+      }
+      section:nth-child(odd) {
+        background-color: #f1c40f;
+      }
+      .tab2 {
+        margin-left: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="tab1">
+      <nav>
+        <a href="javascript:;">后盾人</a>
+        <a href="javascript:;">hdcms</a>
+        <a href="javascript:;">hdcms</a>
+      </nav>
+      <section>1</section>
+      <section>2</section>
+      <section>3</section>
+    </main>
+
+    <script type="module">
+      //   import Tab from "./tab.js";
+      //   const tab1 = new Tab();
+      //   tab1.setTab(".tab1");
+      import Tab from "./tab2.js";
+    //   console.log(Tab);
+      let tab = new Tab();
+      tab.setTab(".tab1");
+      console.log(tab);
+    </script>
+  </body>
+</html>

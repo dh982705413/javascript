@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 300px;
+        height: 300px;
+        display: flex;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+      }
+      span {
+        display: inline-block;
+        font-size: 3rem;
+      }
+      img {
+        width: 200px;
+        height: 100px;
+        animation: bottomInsert 2s cubic-bezier(0.41, 0.89, 0.4, 0.89) 1;
+      }
+      .left {
+        animation: leftInsert 2s cubic-bezier(0.41, 0.89, 0.4, 0.89) 1;
+      }
+      .right {
+        animation: rightInsert 2s cubic-bezier(0.41, 0.89, 0.4, 0.89) 1;
+      }
+
+      @keyframes leftInsert {
+        from {
+          transform: translateX(-1000px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      @keyframes rightInsert {
+        from {
+          transform: translateX(1000px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      @keyframes bottomInsert {
+        from {
+          transform: translateY(1000px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span class="left">左边</span>
+      <img src="./timg.jpg" alt="" />
+      <span class="right">右边</span>
+    </div>
+  </body>
+</html>

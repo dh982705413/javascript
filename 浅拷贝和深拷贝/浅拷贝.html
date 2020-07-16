@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let dh = { name: '邓浩', age: 18, hobbiers: ['吃饭', '睡觉', '打豆豆'] }
+
+        // 使用for/in 循环
+        // let dhcopy = {}
+        // for (const key in dh) {
+        //     dhcopy[key] = dh[key]
+        // }
+
+        // 使用Object.assign
+        // let dhcopy = Object.assign(dh)
+
+        // 使用展开语法
+        // let dhcopy = { ...dh }
+
+
+        console.log(dh);
+        dh.age = 20
+        dh.hobbiers[0] = "打代码"
+        console.log(dhcopy);
+    </script>
+</body>
+
+</html>

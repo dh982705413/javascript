@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 会改变原数组
+      //   let dh = [
+      //     { title: "js", name: "javascript" },
+      //     { title: "css", name: "层叠样式表" },
+      //     { title: "html", name: "文本标记语言" },
+      //   ];
+
+      //   let dh2 = dh.map((item) => {
+      //     item.click = 100;
+      //     return item;
+      //   });
+
+      let dh = [
+        { title: "js", name: "javascript" },
+        { title: "css", name: "层叠样式表" },
+        { title: "html", name: "文本标记语言" },
+      ];
+
+      let dh2 = dh.map((item) => {
+        //   使用OBject.assign()方法可以避免改变原数组
+        return Object.assign({ click: 123 }, item);
+      });
+
+      console.table(dh);
+      console.table(dh2);
+    </script>
+  </body>
+</html>

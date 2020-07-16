@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let arr = [1, 2];
+      // let arr2 = arr.filter((item, index, arr) => {
+      //   return item === 2;
+      // });
+      // console.log(arr2);
+
+      // let arr = ["dg", "dh.com", "smm", "java"];
+      // let arr2 = arr.filter((item, index, arr) => {
+      //   return item === "dh.com";
+      // });
+      // console.log(arr2);
+
+      let lessons = [
+        { title: "java", category: "css" },
+        { title: "mysql", cateogry: "sql" },
+        { title: "mongodb", cateogry: "sql" },
+        { title: "nodejs", cateogry: "js" },
+      ];
+      const cssLessons = lessons.filter((item, index) => {
+        return item.category === "css";
+      });
+      console.log(cssLessons);
+    </script>
+  </body>
+</html>
